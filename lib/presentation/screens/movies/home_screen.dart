@@ -1,5 +1,7 @@
 import 'package:cinemapoli/config/constants/enviromment.dart';
+import 'package:cinemapoli/presentation/providers/movies/movies_providers.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 //import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -11,6 +13,34 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text('Cinepolice')),
       body: Center(child: Text(Enviromment.theMovieDbKey)),
+    );
+  }
+}
+
+class _HomeView extends ConsumerStatefulWidget {
+  const _HomeView();
+
+  @override
+  _HomeViewState createState() => _HomeViewState();
+}
+
+class _HomeViewState extends ConsumerState<_HomeView> {
+  @override
+  void initState() {
+    super.initState();
+    ref.read(nowPlayingMoviesProvider.notifier).loadNextPage();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final nowPlayingMovies = ref.watch(nowPlayingMoviesProvider);
+
+    return ListView.builder(
+      itemCount: nowPlayingMovies.length,
+      itemBuilder: (context, index) {
+        final movie = nowPlayingMovies[index];
+        return ListTile(title: Text(movie.title));
+      },
     );
   }
 }
