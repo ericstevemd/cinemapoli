@@ -1,6 +1,6 @@
 import 'package:cinemapoli/config/domain/entities/novie.dart';
 import 'package:cinemapoli/presentation/providers/movies/movies_repositoy_provider.dart';
-import 'package:flutter/material.dart';
+
 import 'package:flutter_riverpod/legacy.dart';
 
 final nowPlayingMoviesProvider =
