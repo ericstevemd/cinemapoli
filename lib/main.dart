@@ -20,6 +20,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Material App',
       theme: Appthere().getTheme(),
+
       home: HomeScreen(),
     );
   }

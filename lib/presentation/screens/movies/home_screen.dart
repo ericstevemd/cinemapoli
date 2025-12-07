@@ -1,8 +1,9 @@
 import 'package:cinemapoli/config/constants/enviromment.dart';
 import 'package:cinemapoli/presentation/providers/movies/movies_providers.dart';
+import 'package:cinemapoli/presentation/widgets/shared/custom_appbar.dart';
+import 'package:cinemapoli/presentation/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-//import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class HomeScreen extends StatelessWidget {
   static const name = 'home-screen';
@@ -12,6 +13,8 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Cinepolice')),
+
+      //body: Center(child: Text('hola mundo ')),
       body: Center(child: Text(Enviromment.theMovieDbKey)),
     );
   }
@@ -35,12 +38,12 @@ class _HomeViewState extends ConsumerState<_HomeView> {
   Widget build(BuildContext context) {
     final nowPlayingMovies = ref.watch(nowPlayingMoviesProvider);
 
-    return ListView.builder(
-      itemCount: nowPlayingMovies.length,
-      itemBuilder: (context, index) {
-        final movie = nowPlayingMovies[index];
-        return ListTile(title: Text(movie.title));
-      },
+    return Column(
+      children: [
+        CustomAppbar(),
+
+        MoviesSildeshow(movies: nowPlayingMovies),
+      ],
     );
   }
 }
