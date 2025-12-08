@@ -40,6 +40,7 @@ class _Slide extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // ignore: non_constant_identifier_names
     final Decoration = BoxDecoration(
       borderRadius: BorderRadius.circular(20),
       boxShadow: [

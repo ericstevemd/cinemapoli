@@ -1,6 +1,6 @@
-import 'package:cinemapoli/config/constants/enviromment.dart';
+//import 'package:cinemapoli/config/constants/enviromment.dart';
 import 'package:cinemapoli/presentation/providers/movies/movies_providers.dart';
-import 'package:cinemapoli/presentation/widgets/shared/custom_appbar.dart';
+//import 'package:cinemapoli/presentation/widgets/shared/custom_appbar.dart';
 import 'package:cinemapoli/presentation/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -15,7 +15,8 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(title: Text('Cinepolice')),
 
       //body: Center(child: Text('hola mundo ')),
-      body: Center(child: Text(Enviromment.theMovieDbKey)),
+      body: _HomeView(),
+      bottomNavigationBar: CustonBottomNavigation(),
     );
   }
 }
@@ -43,6 +44,8 @@ class _HomeViewState extends ConsumerState<_HomeView> {
         CustomAppbar(),
 
         MoviesSildeshow(movies: nowPlayingMovies),
+
+        MovieHorizontalListview(novies: [], subtitle: ''),
       ],
     );
   }
